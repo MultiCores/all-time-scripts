@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     void Update()
     {
+        // Checks for user's input and sets the bool GameIsPaused according to the inputs.
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(GameIsPaused)
@@ -20,7 +21,8 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
-
+    
+    // Sets the game's timescale to normal speed and deactivates the pause menu.
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -28,6 +30,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
     }
 
+    // Sets the game's timescale to none and activates the pause menu.
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
