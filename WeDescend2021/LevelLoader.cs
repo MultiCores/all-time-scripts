@@ -9,6 +9,7 @@ public class LevelLoader : MonoBehaviour
 
     public float transitionTime = 1f;
 
+    // Loads up the game by it's scene number, while playing the 'transition' animation.
     public void LoadGame()
     {
         StartCoroutine(LoadLevel());
