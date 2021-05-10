@@ -8,7 +8,7 @@ public class EnemyAnimator : MonoBehaviour
     public Animator anim;
     Rigidbody2D body;
 
-    // All player's animations' names set below.
+    // All enemies animations' names set below.
     private enum State {idle, running}
     private State state = State.idle;
     bool alive = true;
