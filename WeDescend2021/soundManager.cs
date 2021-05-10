@@ -9,11 +9,13 @@ public class soundManager : MonoBehaviour
 
     void Awake ()
     {
+        // Sets the soundManager's instance.
         if(instance == null)
         {
             instance = this;
         }
-
+        
+        // Adds settings for easier use of sounds, with Unity's tools.
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -23,23 +25,11 @@ public class soundManager : MonoBehaviour
             s.source.pitch = s.pitch;
         }
     }
-
+    
+    // A function to play sounds determined by name.
     public void playSound(string name)
     {
-        /*switch (soundStr)
-        {
-            case "gravel1": source.PlayOneShot(sounds[0]);
-                break;
-        }*/
-
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
     }
-
-    /*public void playGunFire(string name)
-    {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.PlayOneShot(name, 1f);
-    }
-    */
 }
