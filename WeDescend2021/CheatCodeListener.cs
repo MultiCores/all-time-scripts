@@ -16,14 +16,14 @@ public class CheatCodeListener : MonoBehaviour
     {
         StartCoroutine(NumberGen());
 		
-		// Checks for the word, that will be expected from the user.
+	// Checks for the word, that will be expected from the user.
         cheatCode = new string[] { "t","e","s","t" };
         index = 0;
     }
 
     void Update()
     {
-		// Checks for user input.
+	// Checks for user input.
         if (Input.anyKeyDown)
         {
             if (Input.GetKeyDown(cheatCode[index]))
@@ -37,11 +37,11 @@ public class CheatCodeListener : MonoBehaviour
         }
         if (index == cheatCode.Length)
         {
-			// Spawns an entity to set coordinate.
+	    // Spawns an entity to set coordinate.
             Instantiate(SpawnableEnemy1, new Vector3(0, 0, 0), Quaternion.identity);
             index = 0;
 	
-			// Plays a sound determined by an rng number.
+	    // Plays a sound determined by an rng number.
             switch (rng)
             {
                 case 0:
@@ -66,7 +66,7 @@ public class CheatCodeListener : MonoBehaviour
         }
     }
 
-	// Creates a number determined by rng after a certain period of time.
+    // Creates a number determined by rng after a certain period of time.
     IEnumerator NumberGen()
     {
         while (true)
