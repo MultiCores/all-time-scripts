@@ -7,6 +7,7 @@ public class Transition : MonoBehaviour
     public Animator transition;
     public soundManager soundManager;
 
+    // Starts the coroutine, which plays the entire animation of changing levels, and also plays sounds.
     public void StartAnimation()
     {
         StartCoroutine(transitionAnimationTrigger());
