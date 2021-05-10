@@ -12,6 +12,7 @@ public class StatPopup : MonoBehaviour
 
     private void Update()
     {
+        // Checks the current gun effect and activates the corresponding UI elements for each effect.
         switch(gunController.effect)
         {
             case 0:
@@ -36,5 +37,4 @@ public class StatPopup : MonoBehaviour
                 break;
         }
     }
-
 }
