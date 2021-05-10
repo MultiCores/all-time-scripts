@@ -9,6 +9,7 @@ public class ButtonPopup : MonoBehaviour
     public GameObject ButtonQ;
     public GameObject ButtonE;
 
+    // Checks whenever player is in the range of the lever and shows UI button elements on screen.
     private void Update()
     {
         if(switchController.leverAccessible == true)
