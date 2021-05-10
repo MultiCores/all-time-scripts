@@ -8,6 +8,7 @@ public class EnemyAnimator : MonoBehaviour
     public Animator anim;
     Rigidbody2D body;
 
+    // All player's animations' names set below.
     private enum State {idle, running}
     private State state = State.idle;
     bool alive = true;
@@ -24,6 +25,7 @@ public class EnemyAnimator : MonoBehaviour
 
     private void Update()
     {
+        // Checks for whether or not player is alive. If is, then it updates the AnimationState every frame.
         if (alive)
         {
             AnimationState();
@@ -34,21 +36,11 @@ public class EnemyAnimator : MonoBehaviour
 
     private void AnimationState()
     {
+        // Checks if player is moving, then making the 'running' animation play. If not, make the player's animation play 'idle'.
         if(enemyControl.pf.canMove == true)
         {
             state = State.running;
         }
-        /*if(Input.GetKeyDown(KeyCode.K) && enemyPhaseTesting != true)
-        {
-            state = State.running;
-            enemyPhaseTesting = true;
-
-        }
-        else if(Input.GetKeyDown(KeyCode.K) && enemyPhaseTesting == true)
-        {
-            state = State.idle;
-            enemyPhaseTesting = false;
-        }*/
         else
         {
             state = State.idle;
