@@ -6,19 +6,20 @@ public class playerController : MonoBehaviour
 {
     Rigidbody2D body;
     Animator anim;
-
+    
+    // Values for player's movement speed for horizontal and vertical movement.
     float horizontal;
     float vertical;
     float moveLimiter = 0.7f;
-
     public float speed = 20.0f;
+    
     public int rng;
     public soundManager soundManager;
 
     Vector3 localscale;
     public bool facingLeft;
 
-    // State machine's states
+    // Animation states for the player.
     private enum State {idle, running}
     private State state = State.idle;
     bool alive = true;
@@ -37,7 +38,8 @@ public class playerController : MonoBehaviour
         // Gives a value between -1 and 1
         horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
         vertical = Input.GetAxisRaw("Vertical"); // -1 is down
-
+    
+        // Turns the player's sprite around to face the direction of the mouse.
         if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x && facingLeft == false || Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x && facingLeft == true)
         {
             localscale.x *= -1;
@@ -45,7 +47,8 @@ public class playerController : MonoBehaviour
         }
 
         transform.localScale = localscale;
-
+        
+        // If player is alive, this plays the animations every frame.
         if(alive)
         {
             AnimationState();
@@ -56,15 +59,17 @@ public class playerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+        if (horizontal != 0 && vertical != 0) // Checks for diagonal movement.
         {
-            // limit movement speed diagonally, so you move at 70% speed
+            // Limit movement speed diagonally, so you move at 70% speed.
             horizontal *= moveLimiter;
             vertical *= moveLimiter;
         }
 
         body.velocity = new Vector2(horizontal * speed, vertical * speed);
     }
+    
+    // Creates a random generated number after a certain period of time.
     IEnumerator NumberGen()
     {
         while (true)
@@ -76,10 +81,12 @@ public class playerController : MonoBehaviour
 
     private void AnimationState()
     {
+        // If player's movement speed is faster than these numbers, the 'running' animation plays.
         if(Mathf.Abs(body.velocity.x) > 2f || Mathf.Abs(body.velocity.y) > 2f)
         {
             state = State.running;
-
+    
+            // To play sounds randomly while moving, determined by rng.
             switch (rng)
             {
                 case 0:
