@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class Sound
 {
+    // A set of settings for easier use of sounds in Unity, with Unity's preset tools.
     public string name;
 
     public AudioClip clip;
